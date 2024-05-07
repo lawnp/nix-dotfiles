@@ -71,6 +71,11 @@
     packages = with pkgs; [];
   };
 
+  # start sway at startup
+  environment.loginShellInit= ''
+    [[ "$(tty)" == /dev/tty1 ]] && sway
+  '';
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
