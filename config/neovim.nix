@@ -42,6 +42,12 @@
         plugin = nightfox-nvim;
       }
 
+      {
+          plugin = dashboard-nvim;
+          config = toLuaFile ./nvim/dashboard.lua;
+      }
+
+
       cmp_luasnip
       cmp-nvim-lsp
       luasnip
