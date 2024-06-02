@@ -16,6 +16,14 @@ window#waybar {
     font-family: "Ubuntu";
 }
 
+#workspaces {
+    padding: 0 5px;
+}
+
+#workspaces button {
+    color: #e0def4;
+}
+
 #workspaces button.focused {
     background: #a580d2;
 }
