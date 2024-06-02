@@ -7,35 +7,21 @@
 }
 
 window#waybar {
-    background: transparent;
-    color: white;
+    background: #373354;
+    color: #e0def4;
 }
 
 #window {
     font-weight: bold;
     font-family: "Ubuntu";
 }
-/*
-#workspaces {
-    padding: 0 5px;
-}
-*/
-
-#workspaces button {
-    padding: 0 5px;
-    background: transparent;
-    color: white;
-    border-bottom: 2px solid transparent;
-}
 
 #workspaces button.focused {
-    color: white;
-    border-bottom: 1px solid white;
+    background: #a580d2;
 }
 
 #mode {
     background: #64727D;
-    border-bottom: 3px solid white;
 }
 
 #clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
