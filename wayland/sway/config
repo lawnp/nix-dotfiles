@@ -278,12 +278,11 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-exec --no-startup-id swaybg -i /home/lan/.wallpapers/one.jpg
+exec --no-startup-id swaybg -i /home/lan/.wallpapers/black.jpg
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
-# set primary gruvbox colorscheme colors
 set $bg #282828
 set $red #cc241d
 set $green #98971a
@@ -304,11 +303,11 @@ bar {
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.focused          #5e44bb #706e91 #80FFF9 #FDF6E3
+  client.focused_inactive #61659e #2F3D44 #1ABC9C #454948
+  client.unfocused        #61659e #49485f #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
   client.background       #2B2C2B
 
@@ -317,7 +316,7 @@ bar {
 #############################
 
 # Set inner/outer gaps
-gaps inner 0
+gaps inner 0 
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -328,7 +327,7 @@ gaps outer 0
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
@@ -368,4 +367,3 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
