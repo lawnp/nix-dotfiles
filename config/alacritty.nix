@@ -23,20 +23,18 @@
   };
 
   font = {
+      size = 11;
       normal = {
         family = "B612 Mono";
         style = "Regular";
-        size = 11;
       };
       bold = {
         family = "B612 Mono";
         style = "Bold";
-        size = 11;
       };
       italic = {
         family = "B612 Mono";
         style = "Italic";
-        size = 11;
       };
     };
 
