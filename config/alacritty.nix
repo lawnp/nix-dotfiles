@@ -7,7 +7,7 @@
   shell = "zsh";
 
   env = {
-    TERM = "alacritty";
+    TERM = "xterm-256color";
   };
 
   window = {

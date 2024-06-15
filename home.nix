@@ -8,6 +8,7 @@
     ./config/waybar/waybar.nix
     ./config/git.nix
     ./config/rofi/rofi.nix
+    ./config/tmux/tmux.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -17,6 +18,7 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    bat
   ];
 
   # This value determines the Home Manager release that your

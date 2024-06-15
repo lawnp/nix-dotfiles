@@ -9,6 +9,7 @@
 
   shellAliases = {
     ll = "ls -l";
+    cat = "bat";
   };
   history.size = 10000;
   history.path = "${config.xdg.dataHome}/zsh/history";

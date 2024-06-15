@@ -107,6 +107,8 @@
     swaybg
     ncpamixer
     nil
+    spotify
+    discord
   ];
 
   # shell
