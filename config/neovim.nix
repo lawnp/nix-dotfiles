@@ -10,19 +10,22 @@
     vimAlias = true;
 
     extraPackages = with pkgs; [
+      fd
+      ripgrep
+      nerdfonts
     ];
 
     plugins = with pkgs.vimPlugins; [
 
       {
         plugin = nvim-lspconfig;
-	config = toLuaFile ./nvim/lsp.lua;
+	    config = toLuaFile ./nvim/lsp.lua;
       }
 
       nvim-cmp
       {
         plugin = nvim-cmp;
-	config = toLuaFile ./nvim/cmp.lua;
+	    config = toLuaFile ./nvim/cmp.lua;
       }
 
       {
@@ -33,7 +36,7 @@
           p.tree-sitter-lua
           p.tree-sitter-python
           p.tree-sitter-json
-	  p.tree-sitter-go
+	      p.tree-sitter-go
         ]));
         config = toLuaFile ./nvim/treesitter.lua;
       }
@@ -47,6 +50,11 @@
           config = toLuaFile ./nvim/dashboard.lua;
       }
 
+      {
+          plugin = telescope-nvim;
+          config = toLuaFile ./nvim/telescope.lua;
+      }
+
 
       cmp_luasnip
       cmp-nvim-lsp
@@ -54,11 +62,13 @@
       friendly-snippets
       lualine-nvim
       nvim-web-devicons
+      plenary-nvim
 
     ];
     
     extraLuaConfig = ''
       ${builtins.readFile ./nvim/options.lua}
+      ${builtins.readFile ./nvim/remaps.lua}
     '';
   };
 }

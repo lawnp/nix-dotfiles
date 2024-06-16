@@ -3,10 +3,14 @@ require('dashboard').setup {
     disable_move = true,
     shortcut_type = 'number',
     config = {
-	disable_move = true,
+	    disable_move = true,
         header = { "Supp" },
-	week_header = {
-	    enable = true,
-	}
+	    week_header = {
+	        enable = true,
+	    },
+        packages = { 
+            enable = false,
+        },
+        shortcut = {},
     }
 }

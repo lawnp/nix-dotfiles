@@ -82,6 +82,7 @@
   # fonts
   fonts.packages = with pkgs; [
     font-awesome
+    nerdfonts
   ];
 
   # Audio stuff

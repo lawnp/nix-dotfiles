@@ -1,6 +1,3 @@
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
-
 vim.o.clipboard = "unnamedplus"
 
 vim.opt.guicursor = ""
@@ -27,7 +24,5 @@ vim.o.background = "dark"
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
-
-
 
 vim.cmd [[colorscheme duskfox]]
