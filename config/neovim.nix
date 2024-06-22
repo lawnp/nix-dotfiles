@@ -55,6 +55,11 @@
           config = toLuaFile ./nvim/telescope.lua;
       }
 
+      {
+          plugin = lualine-nvim;
+          config = toLuaFile ./nvim/lualine.lua;
+      }
+
 
       cmp_luasnip
       cmp-nvim-lsp
