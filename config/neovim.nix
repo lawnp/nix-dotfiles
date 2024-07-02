@@ -36,7 +36,8 @@
           p.tree-sitter-lua
           p.tree-sitter-python
           p.tree-sitter-json
-	      p.tree-sitter-go
+          p.tree-sitter-go
+          p.tree-sitter-rust
         ]));
         config = toLuaFile ./nvim/treesitter.lua;
       }
@@ -60,7 +61,6 @@
           config = toLuaFile ./nvim/lualine.lua;
       }
 
-
       cmp_luasnip
       cmp-nvim-lsp
       luasnip
@@ -68,6 +68,7 @@
       lualine-nvim
       nvim-web-devicons
       plenary-nvim
+      vim-gitgutter
 
     ];
     

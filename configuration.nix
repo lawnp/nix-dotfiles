@@ -110,6 +110,9 @@
     nil
     spotify
     discord
+
+    # this is for go pprof
+    graphviz
   ];
 
   # shell
