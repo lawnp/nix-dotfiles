@@ -9,6 +9,9 @@ local function remap(mode, lhs, rhs, options)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
+-- open netrw
+remap("n", "<leader>e", ":E<CR>")
+
 -- moving lines in v mode
 remap("v", "K", ":m '<-2<CR>gv=gv")
 remap("v", "J", ":m '>+1<CR>gv=gv")

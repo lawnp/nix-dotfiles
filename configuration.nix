@@ -53,6 +53,7 @@
   };
 
   security.polkit.enable = true;
+  security.pam.services.hyprlock = {};
 
   # Configure keymap in X11
   services.xserver.xkb = {
