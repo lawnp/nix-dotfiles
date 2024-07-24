@@ -61,6 +61,17 @@
     variant = "";
   };
 
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.sway}/bin/sway";
+          user = "lan";
+        };
+        default_session = initial_session;
+    };
+  };
+
   # Configure console keymap
   console.keyMap = "slovene";
 
@@ -111,6 +122,7 @@
     nil
     spotify
     discord
+    hyprlock
 
     # this is for go pprof
     graphviz
