@@ -280,6 +280,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id swaybg -i /home/lan/.wallpapers/black.jpg
 exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id hyprlock --quiet
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
