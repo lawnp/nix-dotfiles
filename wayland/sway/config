@@ -33,6 +33,9 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
 
+# launch logout menu
+bindsym $mod+Shift+0 exec wlogout -b 4
+
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
@@ -106,6 +109,7 @@ bindsym $mod+minus scratchpad show
 #navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
+
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
