@@ -1,10 +1,6 @@
 {config, pkgs, ...}:
 {
-  programs.neovim = 
-  let
-    toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-  in
-  {
+  programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
@@ -16,20 +12,10 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
-
-      {
-        plugin = nvim-lspconfig;
-	    config = toLuaFile ./nvim/lsp.lua;
-      }
-
+      nvim-lspconfig
       nvim-cmp
-      {
-        plugin = nvim-cmp;
-	    config = toLuaFile ./nvim/cmp.lua;
-      }
 
-      {
-        plugin = (nvim-treesitter.withPlugins (p: [
+      (nvim-treesitter.withPlugins (p: [
           p.tree-sitter-nix
           p.tree-sitter-vim
           p.tree-sitter-bash
@@ -38,29 +24,12 @@
           p.tree-sitter-json
           p.tree-sitter-go
           p.tree-sitter-rust
-        ]));
-        config = toLuaFile ./nvim/treesitter.lua;
-      }
+      ]))
 
-      {
-        plugin = nightfox-nvim;
-      }
-
-      {
-          plugin = dashboard-nvim;
-          config = toLuaFile ./nvim/dashboard.lua;
-      }
-
-      {
-          plugin = telescope-nvim;
-          config = toLuaFile ./nvim/telescope.lua;
-      }
-
-      {
-          plugin = lualine-nvim;
-          config = toLuaFile ./nvim/lualine.lua;
-      }
-
+      nightfox-nvim
+      dashboard-nvim
+      telescope-nvim
+      lualine-nvim
       cmp_luasnip
       cmp-nvim-lsp
       luasnip
@@ -71,10 +40,10 @@
       vim-gitgutter
 
     ];
-    
-    extraLuaConfig = ''
-      ${builtins.readFile ./nvim/options.lua}
-      ${builtins.readFile ./nvim/remaps.lua}
-    '';
+  };
+
+  home.file."${config.xdg.configHome}/nvim" = {
+      source = ./nvim;
+      recursive = true;
   };
 }
