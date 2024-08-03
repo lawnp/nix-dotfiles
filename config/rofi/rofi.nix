@@ -1,7 +1,7 @@
-{ config, ...}:
+{ config, ... }:
 {
-    programs.rofi = {
-        enable = true;
-        theme = ./theme.rasi;    
-    };
+  programs.rofi = {
+    enable = true;
+    theme = ./theme.rasi;
+  };
 }

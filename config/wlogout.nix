@@ -1,38 +1,37 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
-    programs.wlogout = {
-        enable = true;
+  programs.wlogout = {
+    enable = true;
 
-        layout = [
+    layout = [
 
-            {
-                label = "shutdown";
-                action = "systemctl poweroff";
-                text = "Shutdown";
-                keybind = "s";
-            }
+      {
+        label = "shutdown";
+        action = "systemctl poweroff";
+        text = "Shutdown";
+        keybind = "s";
+      }
 
-            {
-                label = "lock";
-                action = "hyprlock --quite";
-                text = "Lock";
-                keybind = "l";
-            }
+      {
+        label = "lock";
+        action = "hyprlock --quite";
+        text = "Lock";
+        keybind = "l";
+      }
 
-            {
-                label = "suspend";
-                action = "systemctl suspend";
-                text = "Suspend";
-                keybind = "u";
-            }
+      {
+        label = "suspend";
+        action = "systemctl suspend";
+        text = "Suspend";
+        keybind = "u";
+      }
 
-            {
-                label = "reboot";
-                action = "systemctl reboot";
-                text = "Reboot";
-                keybind = "r";
-            }
-
-        ];
-    };
+      {
+        label = "reboot";
+        action = "systemctl reboot";
+        text = "Reboot";
+        keybind = "r";
+      }
+    ];
+  };
 }

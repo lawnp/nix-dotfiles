@@ -1,12 +1,11 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    rofi
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ rofi ];
 
   xdg = {
     configFile = {
       "rofi/colors.rasi".text = ''
-        ${builtins.readFile .square.rasi}
+        ${builtins.readFile.square.rasi}
       '';
     };
   };

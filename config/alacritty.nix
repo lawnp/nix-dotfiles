@@ -1,44 +1,46 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
   programs.alacritty.enable = true;
-  
+
   programs.alacritty.settings = {
+    shell = "zsh";
 
-  shell = "zsh";
-
-  env = {
-    TERM = "xterm-256color";
-  };
-
-  window = {
-    padding = {
-      x = 20;
-      y = 20;
+    env = {
+      TERM = "xterm-256color";
     };
-  };
-    
-  scrolling = {
-    history = 10000; 
-    multiplier = 3;
-  };
 
-  font = {
+    window = {
+      padding = {
+        x = 20;
+        y = 20;
+      };
+    };
+
+    scrolling = {
+      history = 10000;
+      multiplier = 3;
+    };
+
+    font = {
       size = 11;
+
       normal = {
         family = "B612 Mono";
         style = "Regular";
       };
+
       bold = {
         family = "B612 Mono";
         style = "Bold";
       };
+
       italic = {
         family = "B612 Mono";
         style = "Italic";
       };
     };
 
-  colors = {
+    colors = {
       primary = {
         background = "#232136";
         foreground = "#e0def4";
@@ -61,6 +63,7 @@
           foreground = "#e0def4";
           background = "#63577d";
         };
+
         focused_match = {
           foreground = "#e0def4";
           background = "#a3be8c";
@@ -77,6 +80,7 @@
           foreground = "#e0def4";
           background = "#ea9a97";
         };
+
         end = {
           foreground = "#e0def4";
           background = "#373354";
@@ -122,19 +126,24 @@
       };
 
       indexed_colors = [
-        { index = 16; color = "#ea9a97"; }
-        { index = 17; color = "#eb98c3"; }
+        {
+          index = 16;
+          color = "#ea9a97";
+        }
+        {
+          index = 17;
+          color = "#eb98c3";
+        }
       ];
     };
 
-  live_config_reload = true;
+    live_config_reload = true;
 
-  debug = {
-    render_timer = false;
-    persistent_logging = false;
-    log_level = "Warn";
-    print_events = false;
-  };
+    debug = {
+      render_timer = false;
+      persistent_logging = false;
+      log_level = "Warn";
+      print_events = false;
+    };
   };
 }
-

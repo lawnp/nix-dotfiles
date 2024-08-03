@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -16,14 +16,14 @@
       nvim-cmp
 
       (nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-nix
-          p.tree-sitter-vim
-          p.tree-sitter-bash
-          p.tree-sitter-lua
-          p.tree-sitter-python
-          p.tree-sitter-json
-          p.tree-sitter-go
-          p.tree-sitter-rust
+        p.tree-sitter-nix
+        p.tree-sitter-vim
+        p.tree-sitter-bash
+        p.tree-sitter-lua
+        p.tree-sitter-python
+        p.tree-sitter-json
+        p.tree-sitter-go
+        p.tree-sitter-rust
       ]))
 
       nightfox-nvim
@@ -38,12 +38,11 @@
       nvim-web-devicons
       plenary-nvim
       vim-gitgutter
-
     ];
   };
 
   home.file."${config.xdg.configHome}/nvim" = {
-      source = ./nvim;
-      recursive = true;
+    source = ./nvim;
+    recursive = true;
   };
 }

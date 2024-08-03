@@ -2,23 +2,33 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
-  
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
   home-manager = {
-    extraSpecialArgs = { inherit inputs; }; 
+    extraSpecialArgs = {
+      inherit inputs;
+    };
     users = {
       lan = import ./home.nix;
     };
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -53,7 +63,7 @@
   };
 
   security.polkit.enable = true;
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = { };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -66,9 +76,9 @@
     settings = rec {
       initial_session = {
         command = "${pkgs.sway}/bin/sway";
-          user = "lan";
-        };
-        default_session = initial_session;
+        user = "lan";
+      };
+      default_session = initial_session;
     };
   };
 
@@ -79,12 +89,16 @@
   users.users.lan = {
     isNormalUser = true;
     description = "Lan Pavletič";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+    ];
+    packages = with pkgs; [ ];
   };
 
   # start sway at startup
-  environment.loginShellInit= ''
+  environment.loginShellInit = ''
     [[ "$(tty)" == /dev/tty1 ]] && sway
   '';
 
@@ -100,7 +114,7 @@
   # Audio stuff
   hardware.pulseaudio.enable = true;
   nixpkgs.config.pulseaudio = true;
-  hardware.pulseaudio.support32Bit = true; 
+  hardware.pulseaudio.support32Bit = true;
 
   # Bluetooth stuff
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -120,6 +134,7 @@
     swaybg
     ncpamixer
     nil
+    nixfmt-rfc-style
     spotify
     discord
     hyprlock
@@ -137,7 +152,6 @@
     enable = true;
     wrapperFeatures.gtk = true;
   };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -165,5 +179,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
