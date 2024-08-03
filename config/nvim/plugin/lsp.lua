@@ -8,6 +8,12 @@ lspconfig.gopls.setup {
 
 lspconfig.nil_ls.setup {
     capabilities = capabilities,
+
+    settings = {
+        nil_ls = {
+            formatter = { command = {"nixfmt"}},
+        },
+    }
 }
 
 lspconfig.lua_ls.setup {
