@@ -5,8 +5,8 @@ vim.g.maplocalleader = ","
 -- dont want to repeat myself
 local opts = { noremap = true, silent = true }
 local function remap(mode, lhs, rhs, options)
-    options = options or opts
-    vim.keymap.set(mode, lhs, rhs, options)
+  options = options or opts
+  vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- open netrw
@@ -41,4 +41,3 @@ remap('n', '<leader>fh', builtin.help_tags)
 -- lsp
 remap('n', 'K', '<cmd> lua vim.lsp.buf.hover()<cr>')
 remap('n', 'gd', '<cmd> lua vim.lsp.buf.definition()<cr>')
-
