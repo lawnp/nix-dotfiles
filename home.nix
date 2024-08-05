@@ -5,6 +5,8 @@
     ./config/alacritty.nix
     ./config/neovim.nix
     ./config/zsh.nix
+    ./config/fish.nix
+    ./config/starship.nix
     ./config/waybar/waybar.nix
     ./config/git.nix
     ./config/rofi/rofi.nix

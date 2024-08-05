@@ -144,8 +144,8 @@
   ];
 
   # shell
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh; # zsh default for all users
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish; # zsh default for all users
 
   # sway
   programs.sway = {
