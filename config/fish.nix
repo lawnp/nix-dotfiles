@@ -5,6 +5,7 @@
 
     shellAliases = {
       v = "nvim";
+      nix-shell = "nix-shell --run fish";
     };
   };
 }

@@ -3,7 +3,7 @@
   programs.alacritty.enable = true;
 
   programs.alacritty.settings = {
-    shell = "zsh";
+    shell = "fish";
 
     env = {
       TERM = "xterm-256color";

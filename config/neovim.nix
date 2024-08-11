@@ -24,6 +24,8 @@
         p.tree-sitter-json
         p.tree-sitter-go
         p.tree-sitter-rust
+        p.tree-sitter-c
+        p.tree-sitter-zig
       ]))
 
       nightfox-nvim
