@@ -25,17 +25,17 @@
       size = 11;
 
       normal = {
-        family = "B612 Mono";
+        family = "Monaspace Neon";
         style = "Regular";
       };
 
       bold = {
-        family = "B612 Mono";
+        family = "Monaspace Neon";
         style = "Bold";
       };
 
       italic = {
-        family = "B612 Mono";
+        family = "Monaspace Radon";
         style = "Italic";
       };
     };

@@ -109,6 +109,7 @@
   fonts.packages = with pkgs; [
     font-awesome
     nerdfonts
+    monaspace
   ];
 
   # Audio stuff

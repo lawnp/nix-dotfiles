@@ -28,4 +28,4 @@ vim.opt.isfname:append("@-@")
 vim.opt.list = true
 vim.opt.listchars = "tab:>-,trail:·"
 
-vim.cmd [[colorscheme duskfox]]
+-- vim.cmd [[colorscheme duskfox]]
