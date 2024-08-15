@@ -25,7 +25,9 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.list = true
-vim.opt.listchars = "tab:>-,trail:·"
+vim.cmd [[highlight ExtraWhitespace ctermbg=cyan guibg=cyan]]
+vim.cmd [[match ExtraWhitespace /\s\+$/]]
+
+vim.opt.list = false
 
 -- vim.cmd [[colorscheme duskfox]]

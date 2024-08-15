@@ -3,7 +3,13 @@ require('nvim-treesitter.configs').setup {
 
   auto_install = false,
 
-  highlight = { enable = true },
+  highlight = { 
+    enable = true,
+
+    disable = {
+      "vimdoc",
+    },
+  },
 
   indent = { enable = true },
 }
