@@ -43,5 +43,4 @@ require('nightfox').setup({
   groups = {},
 })
 
-print("in colors");
 vim.cmd("colorscheme duskfox")

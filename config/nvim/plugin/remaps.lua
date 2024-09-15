@@ -41,3 +41,4 @@ remap('n', '<leader>fh', builtin.help_tags)
 -- lsp
 remap('n', 'K', '<cmd> lua vim.lsp.buf.hover()<cr>')
 remap('n', 'gd', '<cmd> lua vim.lsp.buf.definition()<cr>')
+remap('n', '<leader>r', '<cmd> lua vim.lsp.buf.rename()<cr>')
