@@ -39,8 +39,8 @@
       lualine-nvim
       nvim-web-devicons
       plenary-nvim
-      vim-gitgutter
       indent-blankline-nvim
+      gitsigns-nvim
     ];
   };
 
