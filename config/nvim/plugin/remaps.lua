@@ -42,3 +42,38 @@ remap('n', '<leader>fh', builtin.help_tags)
 remap('n', 'K', '<cmd> lua vim.lsp.buf.hover()<cr>')
 remap('n', 'gd', '<cmd> lua vim.lsp.buf.definition()<cr>')
 remap('n', '<leader>r', '<cmd> lua vim.lsp.buf.rename()<cr>')
+
+-- auto comment in visual select mode
+remap('n', '<leader>r', '<cmd> lua vim.lsp.buf.rename()<cr>')
+
+function Trim(str)
+  return str:gsub("^%s+", "")
+end
+
+-- TODO: add same indentation level if commenting accross blocks
+-- TODO: fix for c comments
+function ToggleComment()
+  local startLinePos = vim.fn.getpos("v")[2]
+  local endLinePos = vim.fn.getpos(".")[2]
+
+  local commentString = vim.bo.commentstring
+  local trimedCommentString = commentString:gsub("%%s", "")
+
+  local commentMode = not vim.startswith(Trim(vim.fn.getline(startLinePos)), trimedCommentString)
+
+  for i = startLinePos, endLinePos do
+    local line = vim.fn.getline(i)
+    local indentation = line:match("^(%s*)")
+    local newLine
+
+    if commentMode then
+      newLine = indentation .. commentString:format(Trim(line))
+    else
+      newLine = indentation .. line:gsub(indentation, "", 1):gsub(trimedCommentString, "", 1)
+    end
+
+    vim.fn.setline(i, newLine)
+  end
+end
+
+remap({'n', 'v'}, '<leader>c', '<cmd> lua ToggleComment()<cr>')
