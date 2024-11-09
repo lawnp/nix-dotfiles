@@ -37,6 +37,7 @@ remap('n', '<leader>ff', builtin.find_files)
 remap('n', '<leader>fg', builtin.live_grep)
 remap('n', '<leader>fb', builtin.buffers)
 remap('n', '<leader>fh', builtin.help_tags)
+remap('n', '<leader>fr', builtin.lsp_references)
 
 -- lsp
 remap('n', 'K', '<cmd> lua vim.lsp.buf.hover()<cr>')
