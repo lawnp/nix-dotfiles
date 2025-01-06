@@ -51,3 +51,7 @@ lspconfig.zls.setup {
 lspconfig.pyright.setup {
   capabilities = capabilities,
 }
+
+lspconfig.jdtls.setup {
+  capabilities = capabilities,
+}
