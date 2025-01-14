@@ -55,3 +55,13 @@ lspconfig.pyright.setup {
 lspconfig.jdtls.setup {
   capabilities = capabilities,
 }
+
+lspconfig.tsserver.setup {
+  capabilities = capabilities,
+  init_options = {
+    plugins = {},
+  },
+  filetypes = {
+    "javascript",
+  },
+}

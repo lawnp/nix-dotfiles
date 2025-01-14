@@ -27,6 +27,7 @@
         p.tree-sitter-c
         p.tree-sitter-zig
         p.tree-sitter-java
+        p.tree-sitter-javascript
       ]))
 
       nightfox-nvim
