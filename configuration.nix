@@ -113,9 +113,11 @@
   ];
 
   # Audio stuff
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
   nixpkgs.config.pulseaudio = true;
   hardware.pulseaudio.support32Bit = true;
+
+  security.rtkit.enable = true;
 
   # Bluetooth stuff
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -148,10 +150,31 @@
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish; # zsh default for all users
 
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    config.sway.default = pkgs.lib.mkForce ["wlr"];
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+    config.common.default = [ "wlr" ];
+  };
+
   # sway
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+  };
+
+  # kanshi systemd service
+  systemd.user.services.kanshi = {
+    description = "kanshi daemon";
+    environment = {
+      WAYLAND_DISPLAY="wayland-1";
+      DISPLAY = ":0";
+    };
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are

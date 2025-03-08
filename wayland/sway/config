@@ -228,6 +228,7 @@ mode "resize" {
 # Autostart applications
 exec --no-startup-id swaybg -i /home/lan/.wallpapers/black.jpg
 exec --no-startup-id hyprlock --quiet
+exec sleep 5; systemctl --user start kanshi.service
 
 set $bg #282828
 set $red #cc241d
