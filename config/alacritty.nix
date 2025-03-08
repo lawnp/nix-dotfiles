@@ -3,7 +3,7 @@
   programs.alacritty.enable = true;
 
   programs.alacritty.settings = {
-    shell = "fish";
+    terminal.shell = "fish";
 
     env = {
       TERM = "xterm-256color";
@@ -137,7 +137,7 @@
       ];
     };
 
-    live_config_reload = true;
+    general.live_config_reload = true;
 
     debug = {
       render_timer = false;
