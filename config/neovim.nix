@@ -8,7 +8,6 @@
     extraPackages = with pkgs; [
       fd
       ripgrep
-      nerdfonts
     ];
 
     plugins = with pkgs.vimPlugins; [

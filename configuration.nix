@@ -14,6 +14,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
+
+    ./greeter
   ];
 
   home-manager = {
@@ -71,17 +73,6 @@
     variant = "";
   };
 
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.sway}/bin/sway";
-        user = "lan";
-      };
-      default_session = initial_session;
-    };
-  };
-
   # Configure console keymap
   console.keyMap = "slovene";
 
@@ -98,9 +89,15 @@
   };
 
   # start sway at startup
-  environment.loginShellInit = ''
-    [[ "$(tty)" == /dev/tty1 ]] && sway
-  '';
+  # environment.loginShellInit = ''
+  #   [[ "$(tty)" == /dev/tty1 ]] && sway
+  # '';
+
+  environment = {
+    variables = {
+      GSK_RENDERER = "ngl";
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -108,16 +105,23 @@
   # fonts
   fonts.packages = with pkgs; [
     font-awesome
-    nerdfonts
     monaspace
   ];
 
   # Audio stuff
   hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.support32Bit = false;
   nixpkgs.config.pulseaudio = true;
-  hardware.pulseaudio.support32Bit = true;
 
   security.rtkit.enable = true;
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
 
   # Bluetooth stuff
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -127,8 +131,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    libgcc
+    gcc
     git
     vim
+    emacs
     alacritty
     firefox
     wdisplays
@@ -141,6 +148,7 @@
     spotify
     discord
     hyprlock
+    greetd.regreet
 
     # this is for go pprof
     graphviz
@@ -154,27 +162,30 @@
     enable = true;
     wlr.enable = true;
     config.sway.default = pkgs.lib.mkForce ["wlr"];
-    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.kdePackages.xdg-desktop-portal-kde
+      pkgs.xdg-desktop-portal-gtk
+    ];
     config.common.default = [ "wlr" ];
+  };
+
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = false;
+    desktopManager.gnome.enable = true;
+  };
+
+  services = {
+    displayManager = {
+      sessionPackages = [ pkgs.sway ];
+    };
   };
 
   # sway
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-  };
-
-  # kanshi systemd service
-  systemd.user.services.kanshi = {
-    description = "kanshi daemon";
-    environment = {
-      WAYLAND_DISPLAY="wayland-1";
-      DISPLAY = ":0";
-    };
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
-    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
