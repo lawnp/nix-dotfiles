@@ -10,7 +10,7 @@ local function remap(mode, lhs, rhs, options)
 end
 
 -- open netrw
-remap("n", "<leader>e", ":E<CR>")
+remap("n", "<leader>e", ":Explore<CR>")
 
 -- moving lines in v mode
 remap("v", "K", ":m '<-2<CR>gv=gv")
