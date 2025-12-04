@@ -13,6 +13,7 @@
     ./config/tmux/tmux.nix
     ./config/hyprlock.nix
     ./config/wlogout.nix
+    ./config/emacs.nix
   ];
 
   # Home Manager needs a bit of information about you and the

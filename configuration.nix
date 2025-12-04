@@ -84,6 +84,8 @@
       "networkmanager"
       "wheel"
       "audio"
+      "docker"
+      "vboxusers"
     ];
     packages = with pkgs; [ ];
   };
@@ -131,11 +133,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    libgcc
-    gcc
     git
     vim
-    emacs
     alacritty
     firefox
     wdisplays
@@ -149,10 +148,16 @@
     discord
     hyprlock
     greetd.regreet
-
-    # this is for go pprof
-    graphviz
+    direnv
+    nix-direnv
   ];
+
+  # Docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   # shell
   programs.fish.enable = true;
