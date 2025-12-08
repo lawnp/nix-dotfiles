@@ -24,10 +24,14 @@
 ;; Fullscreen by default, as early as possible. This tiny window is not enough
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(use-package kaolin-themes
-  :config
-  (load-theme 'kaolin-dark t)
-  (kaolin-treemacs-theme))
+;;(use-package kaolin-themes
+;;  :config
+;;  (load-theme 'kaolin-dark t)
+;;  (kaolin-treemacs-theme))
+
+(load-theme 'catppuccin :no-confirm)
+(setq catppuccin-flavor 'mocha)
+
 
 ;; Make M-x and other mini-buffers sortable, filterable
 (use-package ivy
@@ -99,12 +103,49 @@
   :config
   (ranger-override-dired-mode t))
 
+;; START dashboard
+(use-package dashboard
+  :ensure t
+  :custom
+  (dashboard-projects-backend 'projectile)
+  (dashboard-banner-logo-title "Welcome to Emacs")
+  (dashboard-startup-banner 'logo) ;; logo
+  (dashboard-center-content t)
+  (dashboard-vertically-center-content t))
+  :config
+  (dashboard-setup-startup-hook)
+
+;; END
+
+;; START modeline
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+;; ENC
+
+(setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+
 ;; settings
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1) ;; showing line numbers
 
 (auto-save-mode -1) ;; disable auto-save
 (setq make-backup-files nil) ;; disable backup files
+
+;; Disable mouse acceleration
+(setq mouse-wheel-progressive-speed nil)
+
+;; mouse scrolling
+(setq mouse-wheel-scroll-amount '(3))
+(setq mouse-wheel-follow-mouse t)
+
+;; keyboard scrolling
+(setq scroll-step 1)
+(setq scroll-conservatively 101)
+(setq scroll-margin 10)
+(setq scroll-preserve-screen-position t)
+
+(pixel-scroll-precision-mode 1)
 
 ;; load files
 (load (expand-file-name (concat user-emacs-directory "keybindings.el")))

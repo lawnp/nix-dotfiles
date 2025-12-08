@@ -14,8 +14,11 @@
       yasnippet
       orderless
       consult
-      kaolin-themes
       ranger
+      dashboard
+      catppuccin-theme
+      doom-modeline
+      nerd-icons
     ];
 
   };
