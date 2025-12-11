@@ -65,12 +65,20 @@
   :config
   (projectile-mode +1))
 
+;; rust
 (when (treesit-available-p)
   (add-to-list 'major-mode-remap-alist
 	       '(rust-mode . rust-mode)))
 
 (when (treesit-available-p)
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode)))
+
+;; nix
+
+(use-package nix-ts-mode
+  :mode "\\.nix\\'"
+  :config
+  (setq treesit-font-lock-level 4))
 
 (use-package direnv
              :config

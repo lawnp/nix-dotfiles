@@ -19,6 +19,8 @@
       catppuccin-theme
       doom-modeline
       nerd-icons
+      magit
+      nix-ts-mode
     ];
 
   };
