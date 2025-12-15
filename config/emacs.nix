@@ -1,7 +1,15 @@
 { config, pkgs, ... }:
+let
+  myEmacs =
+    (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (epkgs: with epkgs; [
+      vterm
+      treesit-grammars.with-all-grammars
+    ]);
+in
 {
   programs.emacs = {
     enable = true;
+    package = myEmacs;
     extraPackages = epkgs: with epkgs; [
       use-package
       lsp-mode
@@ -22,6 +30,9 @@
       magit
       nix-ts-mode
       consult
+      dune
+      tuareg
+      ocaml-eglot
     ];
 
   };

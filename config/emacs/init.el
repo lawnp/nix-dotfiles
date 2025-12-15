@@ -74,11 +74,31 @@
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode)))
 
 ;; nix
-
 (use-package nix-ts-mode
   :mode "\\.nix\\'"
   :config
   (setq treesit-font-lock-level 4))
+
+(use-package tuareg
+  :ensure t
+  :mode (("\\.ml\\'" . tuareg-mode)
+         ("\\.mli\\'" . tuareg-mode)
+         ("\\.ocamlinit\\'" . tuareg-mode)))
+
+(use-package ocaml-eglot
+  :ensure t
+  :after tuareg
+  :hook
+  ((tuareg-mode . ocaml-eglot)
+   (ocaml-eglot . eglot-ensure)
+   ;; Optional: auto-format on save
+   (ocaml-eglot . (lambda ()
+                    (add-hook 'before-save-hook 'eglot-format nil t))))
+  :config
+  (setq ocaml-eglot-syntax-checker 'flymake))
+
+(use-package dune
+  :ensure t)
 
 (use-package direnv
              :config
