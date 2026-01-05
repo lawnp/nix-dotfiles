@@ -85,10 +85,13 @@
       "wheel"
       "audio"
       "docker"
-      "vboxusers"
     ];
     packages = with pkgs; [ ];
   };
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "lan" ];
+
 
   # start sway at startup
   # environment.loginShellInit = ''
@@ -129,6 +132,32 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true; # for bluetoothctl
+  services.flatpak.enable = true;
+  services.pcscd.enable = true;
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryPackage = with pkgs; pinentry-curses;
+  };
+
+  services.postgresql = {
+    enable = true;
+    enableTCPIP = true;
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+      host  all      all     127.0.0.1/32   trust
+    '';
+
+    settings = {
+        log_connections = true;
+        log_statement = "all";
+        logging_collector = true;
+        log_disconnections = true;
+        log_directory = "pg_log";
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -150,10 +179,25 @@
     greetd.regreet
     direnv
     nix-direnv
+    slack
+    dbeaver-bin
+    postman
+    ranger
+    mqttx
+    obsidian
+    checkstyle
+
+    # this is for go pprof
+    graphviz
   ];
 
+
   # Docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings.live-restore = false;
+  };
+
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
@@ -187,11 +231,21 @@
     };
   };
 
+  networking.firewall.enable = false;
+
   # sway
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
   };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

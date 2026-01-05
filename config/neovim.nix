@@ -25,6 +25,10 @@
         p.tree-sitter-rust
         p.tree-sitter-c
         p.tree-sitter-zig
+        p.tree-sitter-java
+        p.tree-sitter-javascript
+        p.tree-sitter-typescript
+        p.tree-sitter-angular
       ]))
 
       nightfox-nvim
@@ -40,6 +44,7 @@
       plenary-nvim
       indent-blankline-nvim
       gitsigns-nvim
+      nvim-lint
     ];
   };
 

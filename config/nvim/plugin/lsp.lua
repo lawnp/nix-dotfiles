@@ -55,3 +55,28 @@ lspconfig.pyright.setup {
 lspconfig.jdtls.setup {
   capabilities = capabilities,
 }
+
+lspconfig.tsserver.setup {
+  capabilities = capabilities,
+  init_options = {
+    plugins = {},
+  },
+  filetypes = {
+    "javascript",
+    "typescript",
+  },
+}
+
+lspconfig.angularls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "ngserver",
+    "--stdio",
+    "--tsProbeLocations",
+    vim.fn.expand("$PWD/node_modules"),
+    "--ngProbeLocations",
+    vim.fn.expand("$PWD/node_modules"),
+  },
+  root_dir = lspconfig.util.root_pattern("angular.json", ".git"),
+}
