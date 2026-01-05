@@ -28,6 +28,16 @@ vim.opt.isfname:append("@-@")
 vim.cmd [[highlight ExtraWhitespace ctermbg=cyan guibg=cyan]]
 vim.cmd [[match ExtraWhitespace /\s\+$/]]
 
-vim.opt.list = false
+vim.o.list = true
+vim.o.listchars = 'tab:» ,lead:•,trail:•'
+
+vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {
+    callback = function()
+        local lint_status, lint = pcall(require, "lint")
+        if lint_status then
+            lint.try_lint()
+        end
+    end,
+})
 
 -- vim.cmd [[colorscheme duskfox]]

@@ -9,6 +9,7 @@
     prefix = "C-s";
     terminal = "alacritty";
     shell = "${pkgs.fish}/bin/fish";
+    baseIndex = 1;
 
     extraConfig = ''
       ${builtins.readFile ./tmux.conf}
