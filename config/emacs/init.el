@@ -113,7 +113,7 @@
   :mode "\\.rs\\'"
   :hook (rust-mode . eglot-ensure))
 
-use-package go-mode
+(use-package go-mode
   :mode "\\.go\\'"
   :hook (go-mode . eglot-ensure))
 
@@ -165,6 +165,28 @@ use-package go-mode
 (setq scroll-preserve-screen-position t)
 
 (pixel-scroll-precision-mode 1)
+
+;; whitespace
+(require 'whitespace)
+
+(setq whitespace-style
+      '(face
+        trailing
+        tabs
+        tab-mark
+        missing-newline-at-eof
+        indentation))  ;; ← only spaces used for indentation
+
+(setq whitespace-display-mappings
+      '((space-mark ?\u00A0 [?\u00B7] [?.])   ;; non-breaking space → ·
+        (space-mark ?\u0020 [?\u00B7] [?.])   ;; normal space → ·
+        (tab-mark   ?\t     [?\u00BB ?\t] [?\\ ?\t])))
+
+(global-whitespace-mode 1)
+
+;; Tabs: width 4
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode t)
 
 ;; load files
 (load (expand-file-name (concat user-emacs-directory "keybindings.el")))

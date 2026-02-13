@@ -27,6 +27,7 @@ in
       nerd-icons
       magit
       nix-ts-mode
+      go-mode
       consult
       dune
       tuareg
