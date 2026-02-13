@@ -113,6 +113,10 @@
   :mode "\\.rs\\'"
   :hook (rust-mode . eglot-ensure))
 
+use-package go-mode
+  :mode "\\.go\\'"
+  :hook (go-mode . eglot-ensure))
+
 (use-package ranger
   :ensure t
   :config
