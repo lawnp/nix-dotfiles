@@ -20,6 +20,15 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+vim.opt.autoread = true
+
+vim.api.nvim_create_autocmd(
+  { "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
+  {
+    command = "checktime",
+  }
+)
+
 vim.o.background = "dark"
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -39,5 +48,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {
         end
     end,
 })
+
+vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
 
 -- vim.cmd [[colorscheme duskfox]]

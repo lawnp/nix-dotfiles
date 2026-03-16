@@ -101,6 +101,7 @@
   environment = {
     variables = {
       GSK_RENDERER = "ngl";
+      EDITOR = "nvim";
     };
   };
 
@@ -126,6 +127,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+    wireplumber.enable = true;
   };
 
   # Bluetooth stuff
@@ -140,6 +142,20 @@
     enableSSHSupport = true;
     pinentryPackage = with pkgs; pinentry-curses;
   };
+
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
+  };
+
+  networking.extraHosts =
+    ''
+    192.168.49.2 keycloak.local
+    192.168.49.2 cms.local
+    '';
 
   services.postgresql = {
     enable = true;
@@ -196,11 +212,10 @@
   virtualisation.docker = {
     enable = true;
     daemon.settings.live-restore = false;
-  };
-
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = false;
+    };
   };
 
   # shell
@@ -209,14 +224,10 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    config.sway.default = pkgs.lib.mkForce ["wlr"];
+    config.common.default = "gnome";
     extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-      pkgs.kdePackages.xdg-desktop-portal-kde
       pkgs.xdg-desktop-portal-gtk
     ];
-    config.common.default = [ "wlr" ];
   };
 
   services.xserver = {
@@ -224,6 +235,8 @@
     displayManager.gdm.enable = false;
     desktopManager.gnome.enable = true;
   };
+
+  services.gnome.gnome-remote-desktop.enable = true;
 
   services = {
     displayManager = {

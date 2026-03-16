@@ -1,62 +1,68 @@
-local lspconfig = require('lspconfig')
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-lspconfig.gopls.setup {
+-- gopls
+vim.lsp.config('gopls', {
   capabilities = capabilities,
-}
+})
 
-lspconfig.nil_ls.setup {
+-- nil_ls (nix)
+vim.lsp.config('nil_ls', {
   capabilities = capabilities,
-
   settings = {
     nil_ls = {
       formatter = { command = { "nixfmt" } },
     },
   }
-}
+})
 
-lspconfig.lua_ls.setup {
+-- lua_ls
+vim.lsp.config('lua_ls', {
   capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            version = "LuaJIT",
-        },
-        diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { "vim" },
-        },
-        workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-        },
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = "LuaJIT",
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { "vim" },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
     }
   }
-}
+})
 
-lspconfig.rust_analyzer.setup {
+-- rust_analyzer
+vim.lsp.config('rust_analyzer', {
   capabilities = capabilities,
-}
+})
 
-lspconfig.clangd.setup {
+-- clangd
+vim.lsp.config('clangd', {
   capabilities = capabilities,
-}
+})
 
-lspconfig.zls.setup {
+-- zls
+vim.lsp.config('zls', {
   capabilities = capabilities,
-}
+})
 
-lspconfig.pyright.setup {
+-- pyright
+vim.lsp.config('pyright', {
   capabilities = capabilities,
-}
+})
 
-lspconfig.jdtls.setup {
+-- jdtls
+vim.lsp.config('jdtls', {
   capabilities = capabilities,
-}
+})
 
-lspconfig.tsserver.setup {
+-- ts_ls (renamed from tsserver)
+vim.lsp.config('ts_ls', {
   capabilities = capabilities,
   init_options = {
     plugins = {},
@@ -65,10 +71,10 @@ lspconfig.tsserver.setup {
     "javascript",
     "typescript",
   },
-}
+})
 
-lspconfig.angularls.setup {
-  on_attach = on_attach,
+-- angularls
+vim.lsp.config('angularls', {
   capabilities = capabilities,
   cmd = {
     "ngserver",
@@ -78,5 +84,19 @@ lspconfig.angularls.setup {
     "--ngProbeLocations",
     vim.fn.expand("$PWD/node_modules"),
   },
-  root_dir = lspconfig.util.root_pattern("angular.json", ".git"),
-}
+  root_markers = { "angular.json", ".git" },
+})
+
+-- Enable all configured LSP servers
+vim.lsp.enable({
+  'gopls',
+  'nil_ls',
+  'lua_ls',
+  'rust_analyzer',
+  'clangd',
+  'zls',
+  'pyright',
+  'jdtls',
+  'ts_ls',
+  'angularls',
+})

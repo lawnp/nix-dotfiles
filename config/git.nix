@@ -4,11 +4,16 @@
     enable = true;
     userName = "Lan Pavletič";
     userEmail = "pavletic.lan@gmail.com";
+
+    signing = {
+      key = "886A4E3561CF04A6";
+      signByDefault = true;
+    };
+
     extraConfig = {
-      commit.gpgsign = true;
-      gpg.format = "ssh";
-      user.signingkey = "~/.ssh/id_ed25519.pub";
-      init.defaultBranch = "main";
+      gpg = {
+        program = "${pkgs.gnupg}/bin/gpg";
+      };
     };
   };
 }

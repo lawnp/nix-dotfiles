@@ -45,6 +45,7 @@
       indent-blankline-nvim
       gitsigns-nvim
       nvim-lint
+      copilot-vim
     ];
   };
 
