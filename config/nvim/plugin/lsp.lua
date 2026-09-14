@@ -57,9 +57,23 @@ vim.lsp.config('pyright', {
 })
 
 -- jdtls
-vim.lsp.config('jdtls', {
-  capabilities = capabilities,
-})
+  vim.lsp.config('jdtls', {
+    capabilities = capabilities,
+    cmd = {
+      'jdtls',
+      '-data', vim.fn.expand('~/.cache/jdtls/workspace') .. '/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t'),
+    },
+    root_markers = { 'build.gradle', 'build.gradle.kts', 'pom.xml', '.git' },
+    settings = {
+      java = {
+        configuration = {
+          runtimes = {
+            { name = "JavaSE-21", path = vim.fn.expand("$JAVA_HOME") },
+          }
+        }
+      }
+    }
+  })
 
 -- ts_ls (renamed from tsserver)
 vim.lsp.config('ts_ls', {

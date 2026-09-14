@@ -46,6 +46,19 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  networking.wg-quick.interfaces.wg0 = {
+    address = [ "10.50.0.12/32" ];
+    dns = [ "1.1.1.1" ];
+    privateKey = "6G6KK7lWHJjgDc0RtuarVaMTHgB2dCHaLLCxYlFkMmU=";
+
+    peers = [{
+      publicKey = "tFbEeFLD7b3xVtr77Bn8iqVIhx8YwZ8XgUYoNIpbVkQ=";
+      allowedIPs = [ "0.0.0.0" ];   # or "0.0.0.0/0" for full tunnel
+      endpoint = "172.238.239.77:52323";
+      persistentKeepalive = 25;
+    }];
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Ljubljana";
 
@@ -66,6 +79,8 @@
 
   security.polkit.enable = true;
   security.pam.services.hyprlock = { };
+
+  services.tailscale.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -202,6 +217,7 @@
     mqttx
     obsidian
     checkstyle
+    delta
 
     # this is for go pprof
     graphviz

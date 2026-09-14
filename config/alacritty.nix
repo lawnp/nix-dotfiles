@@ -22,7 +22,7 @@
     };
 
     font = {
-      size = 11;
+      size = 10;
 
       normal = {
         family = "Monaspace Neon";
@@ -40,101 +40,34 @@
       };
     };
 
+    # Tokyo Night Storm color scheme
     colors = {
       primary = {
-        background = "#232136";
-        foreground = "#e0def4";
-        dim_foreground = "#cdcbe0";
-        bright_foreground = "#eae8ff";
-      };
-
-      cursor = {
-        text = "#e0def4";
-        cursor = "#cdcbe0";
-      };
-
-      vi_mode_cursor = {
-        text = "#e0def4";
-        cursor = "#9ccfd8";
-      };
-
-      search = {
-        matches = {
-          foreground = "#e0def4";
-          background = "#63577d";
-        };
-
-        focused_match = {
-          foreground = "#e0def4";
-          background = "#a3be8c";
-        };
-      };
-
-      footer_bar = {
-        foreground = "#e0def4";
-        background = "#373354";
-      };
-
-      hints = {
-        start = {
-          foreground = "#e0def4";
-          background = "#ea9a97";
-        };
-
-        end = {
-          foreground = "#e0def4";
-          background = "#373354";
-        };
-      };
-
-      selection = {
-        text = "#e0def4";
-        background = "#433c59";
+        background = "#24283b";
+        foreground = "#a9b1d6";
       };
 
       normal = {
-        black = "#393552";
-        red = "#eb6f92";
-        green = "#a3be8c";
-        yellow = "#f6c177";
-        blue = "#569fba";
-        magenta = "#c4a7e7";
-        cyan = "#9ccfd8";
-        white = "#e0def4";
+        black = "#32344a";
+        red = "#f7768e";
+        green = "#9ece6a";
+        yellow = "#e0af68";
+        blue = "#7aa2f7";
+        magenta = "#ad8ee6";
+        cyan = "#449dab";
+        white = "#9699a8";
       };
 
       bright = {
-        black = "#47407d";
-        red = "#f083a2";
-        green = "#b1d196";
-        yellow = "#f9cb8c";
-        blue = "#65b1cd";
-        magenta = "#ccb1ed";
-        cyan = "#a6dae3";
-        white = "#e2e0f7";
+        black = "#444b6a";
+        red = "#ff7a93";
+        green = "#b9f27c";
+        yellow = "#ff9e64";
+        blue = "#7da6ff";
+        magenta = "#bb9af7";
+        cyan = "#0db9d7";
+        white = "#acb0d0";
       };
-
-      dim = {
-        black = "#322e42";
-        red = "#d84f76";
-        green = "#8aa872";
-        yellow = "#e6a852";
-        blue = "#4a869c";
-        magenta = "#a580d2";
-        cyan = "#7bb8c1";
-        white = "#b1acde";
-      };
-
-      indexed_colors = [
-        {
-          index = 16;
-          color = "#ea9a97";
-        }
-        {
-          index = 17;
-          color = "#eb98c3";
-        }
-      ];
     };
 
     general.live_config_reload = true;

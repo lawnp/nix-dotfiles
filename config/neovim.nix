@@ -32,6 +32,8 @@
       ]))
 
       nightfox-nvim
+      vague-nvim
+      tokyonight-nvim
       dashboard-nvim
       telescope-nvim
       lualine-nvim
@@ -46,6 +48,7 @@
       gitsigns-nvim
       nvim-lint
       copilot-vim
+      lazygit-nvim
     ];
   };
 

@@ -51,4 +51,4 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {
 
 vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
 
--- vim.cmd [[colorscheme duskfox]]
+vim.cmd [[colorscheme tokyonight-storm]]
