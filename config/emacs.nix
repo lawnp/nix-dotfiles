@@ -21,6 +21,7 @@
       nerd-icons
       magit
       nix-ts-mode
+      consult
     ];
 
   };

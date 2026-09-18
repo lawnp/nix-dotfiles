@@ -221,6 +221,8 @@
 
     # this is for go pprof
     graphviz
+    fzf
+    ripgrep
   ];
 
 
