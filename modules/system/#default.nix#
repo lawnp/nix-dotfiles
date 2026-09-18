@@ -1,0 +1,14 @@
+{ pkgs, ... }:
+{
+  imports = [
+    ./gnu.nix
+    ./ocaml.nix
+    ./nix.nix
+    ./g
+  ];
+
+  environment.systemPackages = with pkgs; [
+    ripgrep
+    fzf
+  ];
+}

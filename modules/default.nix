@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  imports = [ ./system ];
+  imports = [ ./system "common.nix" ];
 }

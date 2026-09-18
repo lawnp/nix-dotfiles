@@ -11,16 +11,17 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
-    {
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [
-	  ./configuration.nix
-	  ./modules
-	];
-      };
+  { self, nixpkgs, ... }@inputs:
+  let
+    mkHost = host: nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [ ./modules/common.nix ./hosts/${host} ];
     };
+  in {
+      nixosConfigurations = {
+        work = mkHost "work";
+        home = mkHost "home";
+      };
+  };
 }

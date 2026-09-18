@@ -6,7 +6,7 @@
     userEmail = "pavletic.lan@gmail.com";
 
     signing = {
-      key = "886A4E3561CF04A6";
+      key = "703DAA0913F1DCBF ";
       signByDefault = true;
     };
 
