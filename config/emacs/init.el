@@ -76,6 +76,7 @@
 ;; nix
 (use-package nix-ts-mode
   :mode "\\.nix\\'"
+  :hook (nix-ts-mode . eglot-ensure)
   :config
   (setq treesit-font-lock-level 4))
 
@@ -84,6 +85,9 @@
   :mode (("\\.ml\\'" . tuareg-mode)
          ("\\.mli\\'" . tuareg-mode)
          ("\\.ocamlinit\\'" . tuareg-mode)))
+
+(use-package eglot
+  :commands eglot-ensure)
 
 (use-package ocaml-eglot
   :ensure t
@@ -105,26 +109,9 @@
              (direnv-mode)
              (advice-add 'rust-mode :before #'direnv-update-environment))
 
-;; Package for interacting with language servers
-(use-package lsp-mode
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook ((rust-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
-
-(use-package lsp-ui
-  :after lsp-mode
-  :hook (lsp-mode . lsp-ui-mode)
-  :config
-  (setq lsp-ui-doc-enable t
-        lsp-ui-doc-position 'at-point
-        lsp-ui-sideline-enable t
-        lsp-ui-sideline-show-code-actions t))
-
 (use-package rust-mode
   :mode "\\.rs\\'"
-  :hook (rust-mode . lsp))
+  :hook (rust-mode . eglot-ensure))
 
 (use-package ranger
   :ensure t

@@ -202,8 +202,6 @@
     unzip
     swaybg
     ncpamixer
-    nil
-    nixfmt-rfc-style
     spotify
     discord
     hyprlock
@@ -229,6 +227,7 @@
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocamlformat
     ocamlPackages.utop
+    dbeaver-bin
   ];
 
 

@@ -12,8 +12,6 @@ in
     package = myEmacs;
     extraPackages = epkgs: with epkgs; [
       use-package
-      lsp-mode
-      lsp-ui
       direnv
       which-key
       project
