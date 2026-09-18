@@ -123,18 +123,21 @@
   (ranger-override-dired-mode t))
 
 ;; START dashboard
-(use-package dashboard
-  :ensure t
-  :custom
-  (dashboard-projects-backend 'projectile)
-  (dashboard-banner-logo-title "Welcome to Emacs")
-  (dashboard-startup-banner 'logo) ;; logo
-  (dashboard-center-content t)
-  (dashboard-vertically-center-content t)
-  :config
-  (if (daemonp)
-      (add-hook 'server-after-make-frame-hook #'dashboard-open)
-    (dashboard-setup-startup-hook)))
+;; TODO: re-enable once nixpkgs is bumped to nixos-26.11 — dashboard 20260402
+;; (shipped by nixos-26.05) crashes on every render with
+;; "Wrong type argument: symbolp" from dashboard-cycle-section-forward.
+;; (use-package dashboard
+;;   :ensure t
+;;   :custom
+;;   (dashboard-projects-backend 'projectile)
+;;   (dashboard-banner-logo-title "Welcome to Emacs")
+;;   (dashboard-startup-banner 'logo) ;; logo
+;;   (dashboard-center-content t)
+;;   (dashboard-vertically-center-content t)
+;;   :config
+;;   (if (daemonp)
+;;       (add-hook 'server-after-make-frame-hook #'dashboard-open)
+;;     (dashboard-setup-startup-hook)))
 
 ;; END
 
@@ -144,8 +147,8 @@
   :hook (after-init . doom-modeline-mode))
 ;; ENC
 
-(unless (daemonp)
-  (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name))))
+;; (unless (daemonp)
+;;   (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name))))
 
 ;; settings
 (setq display-line-numbers-type 'relative)

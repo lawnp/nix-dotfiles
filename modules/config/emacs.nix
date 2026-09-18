@@ -21,7 +21,9 @@ in
       orderless
       consult
       ranger
-      dashboard
+      # TODO: re-enable once nixpkgs is bumped to nixos-26.11 — dashboard
+      # 20260402 (in nixos-26.05) crashes on render. See init.el.
+      # dashboard
       catppuccin-theme
       doom-modeline
       nerd-icons
