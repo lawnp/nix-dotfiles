@@ -130,9 +130,11 @@
   (dashboard-banner-logo-title "Welcome to Emacs")
   (dashboard-startup-banner 'logo) ;; logo
   (dashboard-center-content t)
-  (dashboard-vertically-center-content t))
+  (dashboard-vertically-center-content t)
   :config
-  (dashboard-setup-startup-hook)
+  (if (daemonp)
+      (add-hook 'server-after-make-frame-hook #'dashboard-open)
+    (dashboard-setup-startup-hook)))
 
 ;; END
 
@@ -142,7 +144,8 @@
   :hook (after-init . doom-modeline-mode))
 ;; ENC
 
-(setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+(unless (daemonp)
+  (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name))))
 
 ;; settings
 (setq display-line-numbers-type 'relative)
