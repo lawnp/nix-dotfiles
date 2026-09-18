@@ -10,5 +10,6 @@
   environment.systemPackages = with pkgs; [
     ripgrep
     fzf
+    claude-code
   ];
 }

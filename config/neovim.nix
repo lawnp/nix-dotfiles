@@ -49,6 +49,7 @@
       nvim-lint
       copilot-vim
       lazygit-nvim
+      claudecode-nvim
     ];
   };
 
