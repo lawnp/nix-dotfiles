@@ -5,10 +5,7 @@
     userName = "Lan Pavletič";
     userEmail = "pavletic.lan@gmail.com";
 
-    signing = {
-      key = "703DAA0913F1DCBF ";
-      signByDefault = true;
-    };
+    signing.signByDefault = true;
 
     extraConfig = {
       gpg = {
